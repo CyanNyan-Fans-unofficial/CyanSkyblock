@@ -1,12 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.fabricmc.example.mixin",
+  "package": "com.cyannyan.cyansky.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "ItemEntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
-    "ExampleMixin"
   ],
   "injectors": {
     "defaultRequire": 1
