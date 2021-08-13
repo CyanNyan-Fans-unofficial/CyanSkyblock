@@ -4,7 +4,9 @@ Cyan's Nether Skyblock is a Minecraft challenge that player spawns in the nether
 
 Original design, mod and map by [ProtoSky](https://github.com/DeadlyMC/ProtoSky), check out [Ray's Works series](https://www.youtube.com/watch?v=0WgsD3qBtlo&list=PL-5egZTw99_6bTucOUg7sj0RY8aUvVwFO) on ProtoSky.
 
-Cyan's Skyblock provides a few more starting items and loot table adjustments to make early game progression faster. Check the appendix for a list of differences from vanilla.
+Cyan's Skyblock provides a few more starting items and loot table adjustments. These changes make early game progression much faster, compared to the original protosky, but is still more challenging than the original [skyblock](https://www.minecraftmaps.com/survival-maps/skyblock). Check the appendix for a list of differences from vanilla.
+
+**World Seed: `-7956436320368752080`**
 
 ## Goals
 
