@@ -71,7 +71,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     if (cir.getReturnValue() && !isDead() && source.isOutOfWorld() && getHealth() < 5 && lastSafePos != null) {
       // Teleport to last safe position
       BlockPos pos = getBlockPos();
-      if (Math.abs(pos.getX() - lastSafePos.getX()) + Math.abs(pos.getZ() - lastSafePos.getZ()) < 20) {
+      if (Math.abs(pos.getX() - lastSafePos.getX()) + Math.abs(pos.getZ() - lastSafePos.getZ()) < 50) {
         fallDistance = 0;
         this.requestTeleport(lastSafePos.getX(), lastSafePos.getY() + 2, lastSafePos.getZ());
         this.setVelocity(getVelocity().getX(), 0, getVelocity().getZ());
