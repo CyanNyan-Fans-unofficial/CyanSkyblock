@@ -42,8 +42,8 @@ public abstract class PlayerEntityMixin extends LivingEntity {
       entity.setGlowing(true);
       Vec3d velocity = entity.getVelocity();
       if (getY() < 0) {
-        entity.setVelocity(velocity.multiply(0.7, 1, 0.7));
-        entity.setPosition(entity.getX(), 0, entity.getZ());
+        entity.setVelocity(velocity.multiply(0.1, 1, 0.1));
+        entity.setPos(entity.getX(), 0, entity.getZ());
       } else {
         entity.setVelocity(velocity.multiply(0.1, 1, 0.1));
       }
@@ -52,7 +52,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     }
   }
 
-  @Inject(at = @At("TAIL"), method = "tick()V", cancellable = true)
+  @Inject(at = @At("TAIL"), method = "tick()V")
   private void onTick(CallbackInfo ci) {
     // Save last safe position
     if (isOnGround() && checkSafe(getBlockPos())) {
@@ -62,8 +62,10 @@ public abstract class PlayerEntityMixin extends LivingEntity {
   
   private boolean checkSafe(BlockPos pos) {
     BlockPos posDown = pos.down();
-    BlockState state = world.getBlockState(posDown);
-    return state.getMaterial().isSolid();
+    BlockState state = world.getBlockState(pos);
+    BlockState stateDown = world.getBlockState(posDown);
+    
+    return state.getMaterial().isSolid() || stateDown.getMaterial().isSolid();
   }
 
   @Inject(at = @At("TAIL"), method = "damage(Lnet/minecraft/entity/damage/DamageSource;F)Z", cancellable = true)
@@ -75,7 +77,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
         fallDistance = 0;
         this.requestTeleport(lastSafePos.getX(), lastSafePos.getY() + 2, lastSafePos.getZ());
         this.setVelocity(getVelocity().getX(), 0, getVelocity().getZ());
-        Text teleportText = new LiteralText("Be careful! You're teleported back").formatted(Formatting.YELLOW);
+        Text teleportText = new LiteralText("Be careful! You're teleported back.").formatted(Formatting.YELLOW);
         this.sendMessage(teleportText, false);
       }
     }
